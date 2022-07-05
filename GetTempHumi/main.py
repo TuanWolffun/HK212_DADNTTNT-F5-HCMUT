@@ -1,7 +1,9 @@
+import re
 import time
 import sys
 import json
 from Adafruit_IO import MQTTClient
+from Backend.test import Gauss, KNN
 
 AIO_FEED_ID = "homeinfo"
 AIO_USERNAME = "baokhanhle123"
@@ -31,7 +33,13 @@ def message(client, feed_id, payload):
 def predict(temp, humi):
     print(temp)
     print(humi)
-
+    classifiled = Gauss(temp, humi)
+    result = ""
+    if classifiled == "class1": result = "Trời không mưa"
+    if classifiled == "class2": result = "Trời có thể mưa nhỏ"
+    if classifiled == "class3": result = "Trời có mưa nhỏ"
+    if classifiled == "class4": result = "Trời có mưa vừa"
+    if classifiled == "class5": result = "Trời mưa to"
     time.sleep(10)
 
 

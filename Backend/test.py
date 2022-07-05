@@ -6,7 +6,7 @@ import math
 def Gauss(temperature, humidity):
     classifier = {}
     probability = {}
-    dataset_path = "./train/result/"
+    dataset_path = "./Backend/train/result/"
     for fx in os.listdir(dataset_path):
         if fx.endswith('.npy'):
             name = fx[:-4]
